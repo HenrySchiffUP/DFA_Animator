@@ -1,0 +1,44 @@
+{
+    "states": {
+        "Q0": {
+            "x": 200,
+            "y": 400
+        }, 
+        "Q1": {
+            "x": 400,
+            "y": 200
+        }, 
+        "Q2": {
+            "x": 0,
+            "y": 200
+        }, 
+        "Q3": {
+            "x": 200,
+            "y": 0
+        }
+    },
+    "alphabet": [
+        "a", "b"
+    ],
+    "transitions": {
+        "Q0": {
+            "a": "Q2",
+            "b": "Q1"
+        },
+        "Q1": {
+            "a": "Q1",
+            "b": "Q1"
+        },
+        "Q2": {
+            "a": "Q2",
+            "b": "Q3"
+        },
+        "Q3": {
+            "a": "Q3",
+            "b": "Q1"
+        }
+    },
+    "startState": "Q0",
+    "acceptingStates": ["Q2", "Q3"],
+    "language": "Language: {w | w starts with an 'a' and has at most one 'b'}"
+}

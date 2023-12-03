@@ -1,0 +1,33 @@
+{
+    "states": {
+        "Q0": {
+            "x": 0,
+            "y": 0
+        }, 
+        "Q1": {
+            "x": 300,
+            "y": 0
+        }, 
+        "Q2": {
+            "x": 600,
+            "y": 0
+        }
+    },
+    "transitions": {
+        "Q0": {
+            "0": "Q1",
+            "1": "Q0"
+        },
+        "Q1": {
+            "0": "Q1",
+            "1": "Q2"
+        },
+        "Q2": {
+            "0": "Q1",
+            "1": "Q1"
+        }
+    },
+    "startState": "Q3",
+    "acceptingStates": ["Q0"],
+    "language": "Invalid: input file doesn't include alphabet"
+}

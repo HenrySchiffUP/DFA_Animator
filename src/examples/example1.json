@@ -1,0 +1,60 @@
+{
+    "states": {
+        "Q0": {
+            "x": 0,
+            "y": 250
+        },
+        "Q1": {
+            "x": 300,
+            "y": 250
+        },
+        "Q2": {
+            "x": 600,
+            "y": 250
+        },
+        "Q3": {
+            "x": 600,
+            "y": 0
+        },
+        "Q4": {
+            "x": 300,
+            "y": 500
+        },
+        "Q5": {
+            "x": 600,
+            "y": 500
+        }
+    },
+    "alphabet": [
+        "a", "b"
+    ],
+    "transitions": {
+        "Q0": {
+            "a": "Q1",
+            "b": "Q1"
+        },
+        "Q1": {
+            "a": "Q2",
+            "b": "Q4"
+        },
+        "Q2": {
+            "a": "Q5",
+            "b": "Q3"
+        },
+        "Q3": {
+            "a": "Q1",
+            "b": "Q1"
+        },
+        "Q4": {
+            "a": "Q5",
+            "b": "Q5"
+        },
+        "Q5": {
+            "a": "Q1",
+            "b": "Q1"
+        }
+    },
+    "startState": "Q0",
+    "acceptingStates": ["Q3"],
+    "language": "Language: {w | length of w is a multiple of 3 and w ends with 'ab'}"
+}
