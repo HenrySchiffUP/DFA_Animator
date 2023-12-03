@@ -91,6 +91,8 @@ export default class DFA {
         return true
     }
 
+    // Processes one character of the input string. Returns true if the string is
+    // still being processed, false otherwise
     processString() {
         if (this.inputStringIndex == this.inputString.length && this.inputString.length != 0) {
             return false
