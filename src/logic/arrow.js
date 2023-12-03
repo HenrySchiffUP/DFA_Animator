@@ -81,6 +81,7 @@ export class CurvedArrow extends Arrow {
         const start = {x: this.start.x + offset.x, y: this.start.y + offset.y}
         const end = {x: this.end.x + offset.x, y: this.end.y + offset.y}
 
+        // control points for bezier curves
         const controlPoint1 = {
             x: (start.x - curveHeight * Math.cos(this.angle)) 
                 + curveWidth * Math.cos(this.angle - Math.PI / 2), 
@@ -93,15 +94,6 @@ export class CurvedArrow extends Arrow {
             y: (end.y + curveHeight * Math.sin(this.angle))
                 + curveWidth * Math.sin(this.angle - Math.PI / 2)
         }
-
-        // ctx.strokeStyle = 'red'
-        // ctx.beginPath()
-        // ctx.arc(controlPoint1.x + offset.x, controlPoint1.y + offset.y, 10, 0, 2 * Math.PI, false)
-        // ctx.stroke()
-        // ctx.strokeStyle = 'orange'
-        // ctx.beginPath()
-        // ctx.arc(controlPoint2.x + offset.x, controlPoint2.y + offset.y, 10, 0, 2 * Math.PI, false)
-        // ctx.stroke()
 
         ctx.lineWidth = 3
         ctx.strokeStyle = color
@@ -127,6 +119,7 @@ export class CurvedArrow extends Arrow {
         ctx.fillText(this.chars, 0, 10 / 2)
         ctx.restore()
 
+        // draw arrow head
         ctx.strokeStyle = color
         ctx.beginPath()
         ctx.moveTo(end.x, end.y)
@@ -159,6 +152,7 @@ export class LoopedArrow extends Arrow {
         const start = {x: this.start.x + offset.x, y: this.start.y + offset.y}
         const end = {x: this.end.x + offset.x, y: this.end.y + offset.y}
 
+        // control points for bezier curve
         const controlPoint1 = {
             x: this.midpoint.x - 120 + offset.x, y: this.midpoint.y - 120 + offset.y
         }
@@ -175,15 +169,8 @@ export class LoopedArrow extends Arrow {
             controlPoint2.x, controlPoint2.y,
             end.x, end.y)
         ctx.stroke()
-        
-        // ctx.strokeStyle = 'red'
-        // ctx.beginPath()
-        // ctx.arc(controlPoint1.x, controlPoint1.y, 10, 0, 2 * Math.PI, false)
-        // ctx.stroke()
-        // ctx.beginPath()
-        // ctx.arc(controlPoint2.x, controlPoint2.y, 10, 0, 2 * Math.PI, false)
-        // ctx.stroke()
 
+        // draw characters
         ctx.textAlign = "center"
         ctx.fillStyle = color
         ctx.font = "24px Arial"
@@ -191,6 +178,7 @@ export class LoopedArrow extends Arrow {
             this.chars, this.charsPosition.x + offset.x, 
             this.charsPosition.y + offset.y)
         
+        // draw arrow head
         ctx.strokeStyle = color
         ctx.beginPath()
         ctx.moveTo(end.x, end.y)

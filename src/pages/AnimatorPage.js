@@ -119,9 +119,6 @@ const AnimatorPage = () => {
                 <div className="dropdown">
                     <button className="dropbtn" disabled={auto}>examples</button>
                     <div className="dropdown-content">
-                        {/* <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a> */}
                         {examples.map((example, index) => (
                             <div 
                                 key={index}
@@ -156,7 +153,6 @@ const AnimatorPage = () => {
                 </div>
                 <button className="dropbtn" style={{opacity: "0"}}>Dropdown</button>
             </div>
-            {/* <canvas width="960" height="720"ref={canvasRef}></canvas> */}
             <h3 className="language">{language}</h3>
             <div ref={parentDivRef} className="canvasWrapper">
                 {dfa ? 

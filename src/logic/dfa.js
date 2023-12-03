@@ -23,6 +23,7 @@ export default class DFA {
         this.valid = this.verify()
     }
 
+    // returns true if the DFA is valid, false otherwise
     verify() {
         // check that all parts of DFA were given
         if (!this.states || !this.alphabet || !this.transitions ||
@@ -117,6 +118,7 @@ export default class DFA {
         return true
     }
 
+    // lists all neighboring nodes for later use in createArrows function
     findNeighbors() {
         this.neighbors = []
 
@@ -129,6 +131,8 @@ export default class DFA {
         }
     }
 
+    // loop through transitions and create Arrow objects accordingly,
+    // to be drawn later
     createArrows() {
         const radius = 30
 
@@ -171,7 +175,6 @@ export default class DFA {
                     }
 
                     const newArrow = new LoopedArrow(start, end, char)
-                    // this.arrows.push(newArrow)
                     this.arrows[transitionEncoding] = newArrow
                     existingTransitions[stateTo] = newArrow
 
@@ -189,7 +192,6 @@ export default class DFA {
                     }
 
                     const newArrow = new CurvedArrow(start, end, char)
-                    // this.arrows.push(newArrow)
                     this.arrows[transitionEncoding] = newArrow
                     existingTransitions[stateTo] = newArrow
 
@@ -206,7 +208,6 @@ export default class DFA {
                     }
 
                     const newArrow = new Arrow(start, end, char)
-                    // this.arrows.push(newArrow)
                     this.arrows[transitionEncoding] = newArrow
                     existingTransitions[stateTo] = newArrow
                 }
@@ -214,6 +215,7 @@ export default class DFA {
         }
     }
 
+    // draw the DFA to the canvas
     draw(ctx) {
         const states = Object.values(this.states)
         var average = {x: 0, y: 0}
@@ -225,6 +227,7 @@ export default class DFA {
 
         average = {x: average.x / states.length, y: average.y / states.length}
 
+        // create an offset to center the DFA based on the window size
         const offset = {
             x: ctx.canvas.clientWidth / 2 - average.x,
             y: ctx.canvas.clientHeight / 2 - average.y + 50
@@ -237,6 +240,7 @@ export default class DFA {
 
         const radius = 30
 
+        // draw all states
         for (const [name, position] of Object.entries(this.states)) {
             ctx.fillStyle = 'darkgray'
             ctx.strokeStyle = name == this.currentState ? 'deepskyblue' : 'black'
@@ -250,6 +254,7 @@ export default class DFA {
             ctx.font = "24px Arial"
             ctx.fillText(name, position.x + offset.x, position.y + offset.y + 7)
 
+            // draw an extra ring for accepting states
             if (this.acceptingStates.includes(name)) {
                 ctx.lineWidth = 3
                 ctx.beginPath()
@@ -260,6 +265,7 @@ export default class DFA {
             }
         }
 
+        // draw all arrows
         Object.values(this.arrows).forEach((arrow) => {
             arrow.draw(ctx, this.lastArrowUsed == arrow ? "deepskyblue" : "black", offset)
         })
