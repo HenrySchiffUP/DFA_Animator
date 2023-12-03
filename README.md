@@ -1,4 +1,4 @@
-To run locally, install Node.js and run the command "npm run start" in the DFA_Animator directory. A new tab should open in you web browser.
+To run locally, install Node.js and run the command "npm run start" in the DFA_Animator directory. A new tab should open in your web browser.
 
 Or, try it online at https://henryschiffup.github.io/DFA_Animator/
 
